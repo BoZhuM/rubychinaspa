@@ -1,4 +1,5 @@
-# rubyChinaSpa build with angularjs and ruby-china.org api/v2.
+# rubyChinaSpa 
+Build with angularjs and ruby-china.org api/v2.
 
 ## 简介
 
