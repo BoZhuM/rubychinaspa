@@ -2,8 +2,7 @@
 Build with angularjs and ruby-china.org api/v2.
 
 ## 简介
-
-此站为ruby-china.org的SPA版, 根据ruby-china.org api制作.使用简单的angularjs语法, 未涉及复杂的directive与filters等. 
+ruby-china.org的SPA版, 根据ruby-china.org api制作.使用简单的angularjs语法, 未涉及复杂的directive与filters等. 
 
 ## 功能
 - 帖子(index/show)
@@ -56,5 +55,6 @@ Google chrome 浏览器通过运行非安全模式(暂时)解决此问题:
 ## TODO
 - 简化代码, 引入更多angularjs的高阶应用.
 - 用户`喜欢`/`收藏`功能.
+- 图片上传功能
 - 允许多界面多主题切换.
 
