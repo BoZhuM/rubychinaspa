@@ -1,0 +1,45 @@
+  <div class='userinfo'>
+        <!-- avatar -->
+        <ul class="list-group col-md-12">
+          <li class="list-group-item" ng-show='user.login' class='userinfo_id'>
+            <label>ID:</label><strong class=''>{{user.login}}</strong>
+            <div id='userinfo_avatar' style="text-align:center;">
+              <a ng-href="{{user.login}}"><img ng-src='{{user.avatar_url}}' style="width:120px;height:120px;" /></a>
+            </div>
+        </li>
+          <li class="list-group-item">
+            <label>Name:</label><strong class=''>{{user.name}}</strong>
+          </li>
+          <li class="list-group-item" ng-show='user.name' >
+            <label>City:</label><strong class=''>{{user.location}}</strong>
+          </li>
+          <li class="list-group-item" ng-show='user.company'>
+            <label>Company:</label><strong class=''>{{user.company}}</strong>
+          </li>
+          <li class="list-group-item" ng-show='user.emial'>
+            <label>Email:</label>
+            <strong class=''>
+                <a ng-href="mailto:{{user.email}}">{{user.email}}</a>
+            </strong>
+          </li>
+          <li class="list-group-item" ng-show='user.tagline'>
+            <label>TagLine:</label>
+            <strong class=''>
+                {{user.tagline}}
+            </strong>
+          </li>
+          <li class="list-group-item" ng-show='user.website'>
+            <label>WebSite:</label>
+            <span>
+                <a class="url" href="{{user.website}}" target="_blank">
+                    {{user.website}}
+                </a>
+            </span>
+          </li>
+          <li class='list-group-item' ng-show='user.bio'>
+            <h4>Bio</h4>
+            <div btf-markdown="user.bio | emoji">
+            </div>
+          </li>
+        </ul>
+  </div>

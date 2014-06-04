@@ -1,0 +1,95 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- <ng-include src="'/views/topics/index_sidebar.html'"></ng-include> -->
+    <div class="col-md-2 " id='sidebar' style='position:relative;'>
+      <!--Sidebar content-->
+      <div class="bs-sidebar hidden-print" role="complementary" data-offset-top="-70" bs-affix style='max-width:180px'>
+        <div class="form-group">
+          <input ng-model="query" class='form-control' bs-affix-target='#sidebar' placeholder='搜索'>
+          排序:
+          <select ng-model="orderProp" class='form-control'>
+            <option value="updated_at" ng-selected>更新时间 </option>
+            <option value="-replies_count">回复数 </option>
+            <option value="name">标题</option>
+          </select><br />
+          每页显示:
+          <select class='form-control' ng-model='per_page' ng-change="changeLocation({per_page: per_page})" ng-options="n for n in range(5, 101, 5)" ></select>
+          <ul class="pager">
+            <li class="previous">
+              <a ng-click='changeLocation({page: page - 1})' ng-disabled='page == 1 ? true : false'>上一页</a>
+            </li>
+            <li class="next">
+              <a ng-click='changeLocation({page: page + 1})'>下一页</a>
+            </li>
+          </ul>
+          跳转:
+          <select class='form-control' ng-model="page" ng-change="changeLocation({page: page})" ng-options="n for n in range(1, 50)" ></select>
+          <br />
+         
+          <a class='btn btn-success btn-sm btn-block' ng-href='#/topics/new' ng-show='login'>发布新帖</a>
+          <a ng-hide='login' class='btn btn-success btn-sm btn-block' ng-href="#/login?returnTo=/topics/new">登陆以发布新帖</a>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-10">
+          <!--Body content-->
+          <div class="box box_gray">
+              <div id="node_info">
+                  <div class="sorts">
+              <span class="lb">查看:</span>
+              <ul>
+                <li class="{{type == 'none' ? 'active' : ''}}"><a ng-click="changeLocation({type: 'none'})" >默认</a></li> /
+                <li  class="{{type == 'popular' ? 'active' : ''}}">
+                  <a class="popular" ng-click="changeLocation({type: 'popular'})" ><i class="glyphicon glyphicon-heart"></i> 优质帖子</a>
+                </li> /
+                <li class="{{type == 'no_reply' ? 'active' : ''}}"><a ng-click="changeLocation({type: 'no_reply'})" >无人问津</a></li> /
+                <li class="{{type == 'recent' ? 'active' : ''}}"><a ng-click="changeLocation({type: 'recent'})"  >最新创建</a></li>
+              </ul>
+            </div>
+          </div>
+          <!-- end of #node_info -->
+          <div class="topics">
+                <div class="topic topic_line topic-item" ng-repeat = "topic in topics | filter:query | orderBy:orderProp">
+                    <div class="pull-left avatar">
+                      <a ng-href="/#/users/{{topic.user.login}}"><img ng-src='{{topic.user.avatar_url}}' class="uface"/>
+                      </a>
+                    </div>
+                    <div class="right_info">
+                      <div class="pull-right replies">
+                          <a class="count state_false" href="#/topics/{{topic.id}}">{{topic.replies_count}}</a>
+                      </div>
+                      <div class="infos">
+                        <div class="title">
+                          <a ng-href="#/topics/{{topic.id}}" title="{{topic.title}}">{{topic.title}}</a>                          
+                        </div>
+                        <div class="info">
+                          <a class="node" ng-href="#/topics/node/{{topic.node_id}}">{{topic.node_name}}</a>
+                          •
+                          <a ng-href="#/users/{{topic.user.login}}">{{topic.user.login}}</a>
+                          •
+                          <em> 发表于: <span time-ago from-time="{{topic.created_at}}"></span></a>
+                          <em ng-show="{{topic.replies_count}}">
+                            •
+                              最后由 <a ng-href="#/users/{{topic.last_reply_user_login}}">{{topic.last_reply_user_login}}</a> 于 <span time-ago from-time="{{topic.replied_at}}"></span> <a ng-href='#/topics/{{topic.id}}#reply{{topic.replies_count}}'>回复</a>
+                          </em>
+                          <em ng-hide="{{topic.replies_count}}">
+                            无回复
+                          </em>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div ng-show="topics.length == 0" class='well'>
+                  此分类下无帖子.请更换筛选方式.
+                </div>
+                  <!-- end of .topic -->
+          </div>
+          <!-- end of .topics -->
+        </div>
+        <!-- end of .box -->
+    </div>
+  </div>
+</div>

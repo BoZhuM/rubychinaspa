@@ -1,0 +1,10 @@
+<div bs-tabs="tabs" class='col-md-8'></div>
+<div class='col-md-4'>
+        <ul class="list-group">
+          <li class="list-group-item"><h5>Github Public Repos<span class='badge pull-right'>{{user_repos.length}}</span></h5></li>
+          <li class="list-group-item" ng-repeat="repo in user_repos | orderBy:'-stargazers_count'">
+            <h4><a ng-href='{{repo.html_url}}' target='_blank'>{{repo.name}}</a><span class='pull-right badge'>{{repo.stargazers_count}}</span></h4>
+            <p>{{repo.description}}</p>
+          </li>
+        </ul>
+</div>

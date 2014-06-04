@@ -1,0 +1,36 @@
+<div class="col-md-2 " id='sidebar' style='position:relative;'>
+  <!--Sidebar content-->
+  <div class="bs-sidebar hidden-print" role="complementary" data-offset-top="-70" bs-affix style='max-width:180px'>
+  <div class="form-group">
+  <input ng-model="query" class='form-control' bs-affix-target='#sidebar' placeholder='搜索'>
+  排序:
+  <select ng-model="orderProp" class='form-control'>
+    <option value="updated_at" ng-selected>更新时间 </option>
+    <option value="-replies_count">回复数 </option>
+    <option value="name">标题</option>
+  </select><br />
+  每页显示:
+  <select class='form-control' ng-model='per_page' ng-change="changeLocation({per_page: per_page})" ng-options="n for n in range(5, 101, 5)" ></select>
+  <ul class="pager">
+    <li class="previous">
+      <a ng-click='changeLocation({page: page - 1})' ng-disabled='page == 1 ? true : false'>上一页</a>
+    </li>
+    <li class="next">
+      <a ng-click='changeLocation({page: page + 1})'>下一页</a>
+    </li>
+  </ul>
+  跳转:
+  <select class='form-control' ng-model="page" ng-change="changeLocation({page: page})" ng-options="n for n in range(1, 50)" ></select>
+  <br />
+  <button type="button" 
+          class="btn btn-success btn-sm btn-block" 
+          data-template="/views/topics/new.html" 
+          data-placement="left" 
+          data-animation="am-slide-left" 
+          bs-aside="aside" 
+          data-container="body">
+    发布新贴
+  </button>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class='user_topics'>
+<table class='table table-bordered table-hover'>
+  <tr ng-repeat="topic in user_topics | orderBy:'-created_at'">
+    <td class='col-md-1'><a href='#/topics/node/{{topic.node_id}}'>{{topic.node_name}}</a></td>
+    <td>
+      <div class='w40 pull-left'>
+        <span class='badge'>{{topic.replies_count}}</span>
+      </div>
+      <a ng-href="#/topics/{{topic.id}}">{{topic.title}}</a>
+      <span class='pull-right text-muted' time-ago from-time="{{topic.updated_at}}"></span>
+    </td>
+  </tr>
+</table>
+</div>

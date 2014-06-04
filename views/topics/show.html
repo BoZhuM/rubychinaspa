@@ -1,0 +1,83 @@
+ <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 hidden-xs hidden-sm">
+      <!--Sidebar content-->
+        <div>
+          <div class='bs-sidebar hidden-print' role="complementary" data-offset-top="-70" bs-affix>
+            <a class='btn btn-success btn-sm btn-block' ng-show='auth' ng-href='#/topics/new'>发布新帖
+            </a>
+          </div>
+        </div>
+    </div>
+
+    <div class="col-md-10">
+      <!--Body content-->
+      <div class='media'>
+        <div class='w60 thumbnail pull-right'>
+          <a ng-href='#/users/{{topic.user.login}}'><img ng-src="{{topic.user.avatar_url}}" /></a>
+        </div>
+        <div class='media-body'>
+          <div class='media-heading'>
+          <h4>{{topic.title}}</h4>
+            <a href='#/topics/node/{{topic.node_id}}'>{{topic.node_name}}</a>
+             • <a href='#/users/{{topic.user.login}}'>{{topic.user.login}}</a>
+             • <span time-ago from-time="{{topic.created_at}}"></span>
+             <a ng-click="favorite()" class='favorite'><i class="glyphicon glyphicon-heart"></i></a>
+          </div>
+        </div>
+        
+      <hr />
+      
+      <div ng-bind-html="topic.body_html"></div>
+
+      <div class="panel panel-default replies" ng-show='topic.replies.length > 0'>
+        <div class="panel-heading">评论<span class='pull-right badge'>评论数: {{topic.replies_count}} </span></div>
+        <div class="panel-body">
+          <div class='media reply' ng-repeat='reply in topic.replies' id='reply{{$index + 1}}'>
+            <a href='/#users/{{reply.user.login}}' class='pull-left w60 thumbnail'>
+              <img ng-src='{{reply.user.avatar_url}}' />
+            </a>
+            <div class='media-body'>
+               <div class='media-heading'>
+                <span class='text-muted'>
+                   <a href='#/users/{{reply.user.login}}'>{{reply.user.login}} </a> 
+                   <span>{{$index + 1}}楼</span> · 
+                   <span time-ago from-time="{{reply.created_at}}"></span>
+                </span>
+               </div>
+               <div ng-bind-html='reply.body_html' at-user>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <hr />
+      <form ng-submit="replyTopic()" ng-show="login">
+        <div class='row'>
+    			<div class='col-md-5'>
+            <textarea class="topic_editor form-control" id="reply_body" ng-model='replyBody' rows="4" tabindex="1" style="min-height: 72px;" msd-elastic="\n"></textarea>
+          </div>
+          <div class='col-md-5'>
+            <div ng-init="replyBody = '**输入回复内容**'" btf-markdown="replyBody | emoji">
+            </div>
+          </div>
+          <div class='col-md-2'>
+            <button class='btn btn-primary btn-small topic_reply_button'>回复</button>
+          </div>
+          <div class='clearfix'></div>
+          <ul>
+            <li>
+              支持 Markdown 格式, **粗体**、~~删除线~~、`单行代码`
+            </li>
+            <li>
+              支持表情，见 <a href='http://www.emoji-cheat-sheet.com/'>Emoji cheat sheet</a>
+            </li>
+          </div>
+      </form>
+
+  	  <div ng-hide="login">
+		  <a ng-href="#/login" class='btn btn-block btn-success col-md-2'>登陆以发表评论</a>
+	  </div>
+    </div>
+  </div>
+</div>

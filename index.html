@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="rubychinaApp">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<title>Ruby china spa by AngularJs</title>
+<!-- bootstrap theme -->
+<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="/css/highlight.css">
+<link rel="stylesheet" href="/css/angular-motion.css">
+<link rel="stylesheet" href="/css/bootstrap-additions.min.css">
+<link rel="stylesheet" href="/css/emoji.min.css">
+<link rel="stylesheet" href="/css/loading-bar.css">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="/css/animation.css">
+<link rel="stylesheet" href="/css/rubychina.css">
+<script src="/lib/jquery.js"></script>
+<script src="/lib/underscore.js"></script>
+<script src="/lib/angular/angular.js"></script>
+<script src="/lib/angular/angular-underscore.js"></script>
+<script src="/lib/angular/loading-bar.js"></script>
+<script src="/lib/angular/angular-resource.js"></script>
+<script src="/lib/angular/angular-route.js"></script>
+<script src="/lib/angular/angular-cookies.js"></script>
+<script src="/lib/angular/angular-sanitize.js"></script>
+<script src="/lib/angular/angular-animate.js"></script>
+<script src="/lib/showdown.js"></script>
+<script src="/lib/markdown.js"></script>
+<script src="/lib/angular/angular-animate.js"></script>
+<script src="/lib/angular/angular-elastic.js"></script>
+<script src="/lib/angular/angular-timeago.js"></script>
+<script src="/lib/angular/angular-strap.min.js"></script>
+<script src="/lib/angular/angular-strap.tpl.min.js"></script>
+<script src="/lib/emoji.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/services.js"></script>
+<script src="/js/directives.js"></script>
+<script src="/js/controllers.js"></script>
+<script src="/js/filters.js"></script>
+<body ng-controller="NavCtrl">
+  <!-- https://docs.angularjs.org/api/ng/directive/ngInclude -->
+  <!-- angular expression evaluating to URL. If the source is a string constant, make sure you wrap it in single quotes, e.g. src="'myPartialTemplate.html'". -->
+  <div ng-include src="'/views/application/nav.html'"></div>
+      <div class='view-container'>
+      <div ng-view class='view-frame'></div>
+  </div>
+</body>
+</html>
