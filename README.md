@@ -46,7 +46,7 @@ Google chrome 浏览器通过运行非安全模式(暂时)解决此问题:
 ### 本地测试
 
     git clone https://github.com/suffering/rubychinaspa.git
-    cd rbspa
+    cd rubychinaspa
     npm install connect
     node server.js
     google-chrome http://localhost:1337 --disable-web-security
