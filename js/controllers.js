@@ -130,11 +130,12 @@ rubychinaControllers.controller('TopicShowCtrl', ['$scope', 'Topic', 'Node', 'Ph
         successAlert.$promise.then(successAlert.show);
     };
 
-    $scope.replyTopic = function(bd){
+    $scope.replyTopic = function(){
       Topic.reply(
         {id: $scope.topic.id, body: $scope.replyBody},
         function(successResult) {
           $scope.topic = Topic.get({id: $routeParams.id})
+          $scope.replyBody = ''
           $scope.showAlert()
         }, function(errorResult) {
             if(errorResult.status === 404) {            
@@ -205,7 +206,7 @@ rubychinaControllers.controller('UserShowCtrl', ['$scope', '$http', 'User', '$ro
           $scope.user_repos = data
          }, 
          function(data, stats){
-			 console.log("没有与github帐号绑定.")
+    			console.log("没有与github帐号绑定.")
          }
         )
       }
