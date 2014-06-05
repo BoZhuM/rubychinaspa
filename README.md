@@ -45,10 +45,11 @@ Google chrome 浏览器通过运行非安全模式(暂时)解决此问题:
 
 ### 本地测试
 
-    git clone https://github.com/suffering/rbspa.git
+    git clone https://github.com/suffering/rubychinaspa.git
     cd rbspa
     npm install connect
     node server.js
+    google-chrome http://localhost:1337 --disable-web-security
 
   本地测试分两种模式, 一种是直接引用ruby-china.org/api/v2的数据, 另一种是本地运行ruby-china, 而后将`services.js`中的`base_url()`函数的返回值改为`http://localhost:3000`.
 
