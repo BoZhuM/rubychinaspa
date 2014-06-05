@@ -59,3 +59,14 @@ Google chrome 浏览器通过运行非安全模式(暂时)解决此问题:
 - 图片上传功能
 - 允许多界面多主题切换.
 
+*帖子列表**
+![](https://ruby-china-files.b0.upaiyun.com/photo/2014/9bdfcb9484284a9165f9911ee6f81938.png)
+**发帖, markdown即时预览**
+![](https://ruby-china-files.b0.upaiyun.com/photo/2014/929a5e67edcf3743eb63fa672097ee71.png)
+**节点**
+![](https://ruby-china-files.b0.upaiyun.com/photo/2014/89de6a00aefd4a7eb5e7663b5855320d.png)
+**Login**
+![](https://ruby-china-files.b0.upaiyun.com/photo/2014/a80b340ff8d0cbb2924fe965dc0ffde3.png)
+**Users#show**
+![](https://ruby-china-files.b0.upaiyun.com/photo/2014/82fd1f0051d02e43d0f164ce82750478.png)
+![](https://ruby-china-files.b0.upaiyun.com/photo/2014/ef497440fcecae29b279445df7c41fde.png)
