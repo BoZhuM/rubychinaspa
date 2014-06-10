@@ -1,8 +1,8 @@
-# rubyChinaSpa 
+# rubyChinaSpa
 Build with angularjs and ruby-china.org api/v2.
 
 ## 简介
-ruby-china.org的SPA版, 根据ruby-china.org api制作.使用简单的angularjs语法, 未涉及复杂的directive与filters等. 
+ruby-china.org的SPA版, 根据ruby-china.org api制作.使用简单的angularjs语法, 未涉及复杂的directive与filters等.
 
 ## 功能
 - 帖子(index/show)
@@ -32,14 +32,14 @@ Google chrome 浏览器通过运行非安全模式(暂时)解决此问题:
 
 [参考](http://stackoverflow.com/questions/3102819/disable-same-origin-policy-in-chrome/6083677#6083677)
 
-### Online Demo: 
+### Online Demo:
 [http://rbspa.zhuboliu.me](http://rbspa.zhuboliu.me)
 
 **测试帐号**: rbspa
 
 **token**: 3d8757cc530374f18778:13471
 
-以上帐号仅为新注册的测试帐号, 不能发帖, 只能回帖. 
+以上帐号仅为新注册的测试帐号, 不能发帖, 只能回帖.
 
 注意: 可以使用个人的登陆名与token登陆, 但不推荐使用(虽然个人保证不在log中记录任何个人的token).
 
@@ -59,7 +59,7 @@ Google chrome 浏览器通过运行非安全模式(暂时)解决此问题:
 - 图片上传功能
 - 允许多界面多主题切换.
 
-*帖子列表**
+**帖子列表**
 ![](https://ruby-china-files.b0.upaiyun.com/photo/2014/9bdfcb9484284a9165f9911ee6f81938.png)
 **发帖, markdown即时预览**
 ![](https://ruby-china-files.b0.upaiyun.com/photo/2014/929a5e67edcf3743eb63fa672097ee71.png)

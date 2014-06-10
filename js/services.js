@@ -21,7 +21,7 @@ rubychinaServices.factory('Auth', ['$cookieStore', function($cookieStore){
   return auth;
 }])
 
-
+//model topics
 rubychinaServices.factory('Topic', ['$resource',
     function($resource){
         return $resource(base_url() + 'topics/:id.json', {id: '@id'}, {
@@ -34,7 +34,7 @@ rubychinaServices.factory('Topic', ['$resource',
     ]
 )
 
-
+//model Node
 rubychinaServices.factory('Node', ['$resource',
     function($resource){
         return $resource(base_url() + 'topics/node/:id.json', {id: '@id'}, {
@@ -44,7 +44,7 @@ rubychinaServices.factory('Node', ['$resource',
     }
 ]);
 
-
+//model Notification
 rubychinaServices.factory('Notification', ['$resource',
     function($resource){
         return $resource(base_url() + 'notifications/:id.json', {id: '@id'}, {
@@ -54,7 +54,7 @@ rubychinaServices.factory('Notification', ['$resource',
     }
 ]);
 
-
+//model User
 rubychinaServices.factory('User', ['$resource',
     function($resource){
         return $resource(base_url() + 'users/:id.json', {id: '@id'}, {
@@ -66,6 +66,7 @@ rubychinaServices.factory('User', ['$resource',
     }
 ]);
 
+//model Photo
 rubychinaServices.factory('Photo', ['$resource',
     function($resource){
         return $resource(base_url() + 'photos.json',{}, {
@@ -74,7 +75,7 @@ rubychinaServices.factory('Photo', ['$resource',
     }
 ]);
 
-
+//this method can generate standard restful model service for this site.
 // var gservice = function(obj, source, url){
 //     return obj.factory(source, ['$resource',
 //         function($resource){

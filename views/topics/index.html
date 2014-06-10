@@ -25,7 +25,7 @@
           跳转:
           <select class='form-control' ng-model="page" ng-change="changeLocation({page: page})" ng-options="n for n in range(1, 50)" ></select>
           <br />
-         
+
           <a class='btn btn-success btn-sm btn-block' ng-href='#/topics/new' ng-show='login'>发布新帖</a>
           <a ng-hide='login' class='btn btn-success btn-sm btn-block' ng-href="#/login?returnTo=/topics/new">登陆以发布新帖</a>
 
@@ -63,7 +63,7 @@
                       </div>
                       <div class="infos">
                         <div class="title">
-                          <a ng-href="#/topics/{{topic.id}}" title="{{topic.title}}">{{topic.title}}</a>                          
+                          <a ng-href="#/topics/{{topic.id}}" title="{{topic.title}}">{{topic.title}}</a>
                         </div>
                         <div class="info">
                           <a class="node" ng-href="#/topics/node/{{topic.node_id}}">{{topic.node_name}}</a>

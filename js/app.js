@@ -20,6 +20,7 @@ var rubychinaApp = angular.module('rubychinaApp', [
 
 rubychinaApp.run(['$rootScope', 'Node', 'Auth', '$injector', '$location', '$cookieStore', function($rootScope, Node, Auth, $injector, $location, $cookieStore){
   $rootScope.nodes = Node.query();
+  //get nodes by default
   $rootScope.orderProp = "topics_count";
   $injector.get("$http").defaults.transformRequest = function(data, headersGetter) {
       if (Auth.getAuth().token) {
@@ -27,13 +28,14 @@ rubychinaApp.run(['$rootScope', 'Node', 'Auth', '$injector', '$location', '$cook
       }else{
   			 delete headersGetter()['Authorization']
       }
-  
+
       if (data) {
           return angular.toJson(data);
       }
   };
 }]);
 
+//if auth failed, redirect to login page.
 rubychinaApp.factory('authHttpResponseInterceptor',['$q', '$rootScope','$location', '$cookieStore', function($q, $rootScope, $location, $cookieStore){
     return {
         response: function(response){
@@ -57,12 +59,12 @@ rubychinaApp.factory('authHttpResponseInterceptor',['$q', '$rootScope','$locatio
     $httpProvider.interceptors.push('authHttpResponseInterceptor');
 }]);
 
-
+//loading bar.
 rubychinaApp.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false;
   }])
-// ALLOW CROSS-SITE-RESOURCES
 
+// ALLOW CROSS-SITE-RESOURCES
 rubychinaApp.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.useXDomain = true;
     delete $httpProvider.defaults.headers.common["X-Requested-With"];
@@ -80,9 +82,9 @@ rubychinaApp.config(function($sceDelegateProvider) {
 rubychinaApp.config(['$routeProvider',
   function($routeProvider){
     //topics#index
-    $routeProvider.when('/login', { 
-      templateUrl: '/views/application/login.html', 
-      controller: 'AuthCtrl' 
+    $routeProvider.when('/login', {
+      templateUrl: '/views/application/login.html',
+      controller: 'AuthCtrl'
     });
     $routeProvider.when('/topics', {
         templateUrl: '/views/topics/index.html',
@@ -100,7 +102,7 @@ rubychinaApp.config(['$routeProvider',
         templateUrl: '/views/topics/show.html',
         controller: 'TopicShowCtrl'
     });
-    
+
     //nodes#index
     $routeProvider.when('/nodes', {
         templateUrl: '/views/nodes/index.html',

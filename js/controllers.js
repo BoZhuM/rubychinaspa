@@ -24,9 +24,9 @@ rubychinaControllers.controller('AuthCtrl', ['$scope', '$rootScope', '$location'
       {
         scope: $scope,
         show: false,
-        title: ':)', 
-        content: '登陆成功.', 
-        placement: 'top-right', 
+        title: ':)',
+        content: '登陆成功.',
+        placement: 'top-right',
         type: 'info',
         duration: 2
       });
@@ -35,9 +35,9 @@ rubychinaControllers.controller('AuthCtrl', ['$scope', '$rootScope', '$location'
       {
         scope: $scope,
         show: false,
-        title: ':(', 
-        content: '登陆失败, 请检查TOKEN是否出错.', 
-        placement: 'top-right', 
+        title: ':(',
+        content: '登陆失败, 请检查TOKEN是否出错.',
+        placement: 'top-right',
         type: 'info',
         duration: 2
       });
@@ -45,7 +45,7 @@ rubychinaControllers.controller('AuthCtrl', ['$scope', '$rootScope', '$location'
     $scope.toLogin = function(info){
      $cookieStore.put("auth", info)
        Notification.query(
-       {}, 
+       {},
        function(data){
           $rootScope.notifications = data
           $scope.$emit("logged", $scope.login)
@@ -93,10 +93,10 @@ rubychinaControllers.controller("TopicNewCtrl", ['$scope', 'Photo', '$location',
         $scope.topic,
         function(successResult) {
           $location.path("#/topics/" + successResult.id)
-        }, 
+        },
         function(errorResult) {
           if(errorResult.status === 404) {
-              alert('some wrong ')          
+              alert('some wrong ')
           }
         }
       )
@@ -118,9 +118,9 @@ rubychinaControllers.controller('TopicShowCtrl', ['$scope', 'Topic', 'Node', 'Ph
       {
         scope: $scope,
         show: false,
-        title: ':)', 
-        content: '话题回复成功.', 
-        placement: 'top-right', 
+        title: ':)',
+        content: '话题回复成功.',
+        placement: 'top-right',
         type: 'info',
         container: '#alert-container',
         duration: 2
@@ -138,7 +138,7 @@ rubychinaControllers.controller('TopicShowCtrl', ['$scope', 'Topic', 'Node', 'Ph
           $scope.replyBody = ''
           $scope.showAlert()
         }, function(errorResult) {
-            if(errorResult.status === 404) {            
+            if(errorResult.status === 404) {
             }
         }
       )
@@ -168,7 +168,7 @@ rubychinaControllers.controller('NodeShowCtrl', ['$scope', 'Node', '$routeParams
     $scope.pageSize    = $routeParams.size || 30
 
     $scope.loadTopics  = function(){
-      $scope.topics    = Node.get({ id: $routeParams.id, page: $scope.page, per_page: $scope.per_page, type: $routeParams.type}, 
+      $scope.topics    = Node.get({ id: $routeParams.id, page: $scope.page, per_page: $scope.per_page, type: $routeParams.type},
           function(data){
             $scope.node_name = data[0].node_name;
           },
@@ -196,7 +196,8 @@ rubychinaControllers.controller('UserIndexCtrl', ['$scope', 'User', '$routeParam
 rubychinaControllers.controller('UserShowCtrl', ['$scope', '$http', 'User', '$routeParams',
   function UserShowCtrl($scope, $http, User, $routeParams) {
     $scope.user         = User.get({ id: $routeParams.id, size: $scope.pageSize}, function(user){
-      //这里用于得到其github的值.
+      //这里用于得到其github的值. 登陆后将会默认设置HTTP AUTHRIZATION HEADER,
+      //这将会会导致github public api get.因此, 不使用$resource, 而是使用low level的$http, 在请求时将登陆后设置的相应header删除.
       if(user.github_url){
         var github_login  = user.github_url.replace(/https\:\/\/github.com|\//g, '')
         $http({transformRequest: function(data, headersGetter){
@@ -204,14 +205,14 @@ rubychinaControllers.controller('UserShowCtrl', ['$scope', '$http', 'User', '$ro
         }, url: 'https://api.github.com/users/'+github_login+'/repos', method: 'GET'}).success(
          function(data, status){
           $scope.user_repos = data
-         }, 
+         },
          function(data, stats){
     			console.log("没有与github帐号绑定.")
          }
         )
       }
     });
-
+    //这里放弃user/:id.json默认返回的帖子与收藏. 而是另外获取. 并默认get最大值100条.
     $scope.user_topics  = User.topics({id: $routeParams.id, size: 100})
     $scope.user_favorite_topics  = User.favorite({id: $routeParams.id, size: 100})
     $scope.tabs = [
