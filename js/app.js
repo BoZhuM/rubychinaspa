@@ -11,14 +11,14 @@ var rubychinaApp = angular.module('rubychinaApp', [
   'emoji',
   'mgcrea.ngStrap',
   'angular-loading-bar',//
-  'angular-underscore',
   'rubychinaControllers',
   'rubychinaServices',
   'rubychinaDirectives',
-  'rubychinaFilters'
+  'rubychinaFilters',
+  'rubyChinaUtils' // some helper methods.
 ]);
 
-rubychinaApp.run(['$rootScope', 'Node', 'Auth', '$injector', '$location', '$cookieStore', function($rootScope, Node, Auth, $injector, $location, $cookieStore){
+rubychinaApp.run(['$rootScope', 'Node', 'Auth', '$injector', '$cookieStore', function($rootScope, Node, Auth, $injector, $cookieStore){
   $rootScope.nodes = Node.query();
   //get nodes by default
   $rootScope.orderProp = "topics_count";
@@ -36,7 +36,7 @@ rubychinaApp.run(['$rootScope', 'Node', 'Auth', '$injector', '$location', '$cook
 }]);
 
 //if auth failed, redirect to login page.
-rubychinaApp.factory('authHttpResponseInterceptor',['$q', '$rootScope','$location', '$cookieStore', function($q, $rootScope, $location, $cookieStore){
+rubychinaApp.factory('authHttpResponseInterceptor',['$q','$location', '$cookieStore', function($q, $location, $cookieStore){
     return {
         response: function(response){
             if (response.status === 401) {

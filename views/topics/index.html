@@ -13,7 +13,7 @@
             <option value="name">标题</option>
           </select><br />
           每页显示:
-          <select class='form-control' ng-model='per_page' ng-change="changeLocation({per_page: per_page})" ng-options="n for n in range(5, 101, 5)" ></select>
+          <select class='form-control' ng-model='per_page' ng-change="changeLocation({per_page: per_page})" ng-options="n for n in range(5,100,5)" ></select>
           <ul class="pager">
             <li class="previous">
               <a ng-click='changeLocation({page: page - 1})' ng-disabled='page == 1 ? true : false'>上一页</a>

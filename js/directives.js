@@ -6,11 +6,13 @@ rubychinaDirectives.directive('atUser', function() {
     return {
         restrict: 'A',
         link: function (scope, element, attrs) {
-            var ptt = /users/i
-            $(element).bind("mouseenter", function(){
-                $(this).find("a.at_user").each(function(){
-                   if ($(this).attr("href").search(ptt) == -1)
-                        $(this).attr("href", "#/users" + $(this).attr("href"))
+            var pattern = /users/i
+            element.on("mouseenter", function(){
+                angular.forEach(element.find("a"), function(e){
+                   var _el = angular.element(e);
+                   var _href = _el.attr("href");
+                   if (_href.search(pattern) == -1)
+                       _el.attr("href", "#/users" + _href)
                 })
             })
         }
