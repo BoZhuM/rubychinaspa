@@ -1,4 +1,4 @@
-window.rubyChinaUtils ={
+window.Helpers ={
     range: function(){
         var tmpbox = [], args = Array.prototype.slice.call(arguments, 0);
         var startN = args[0], endN = args[1], step = args[2] && args[2] || 1;
@@ -13,9 +13,9 @@ window.rubyChinaUtils ={
     }
 }
 
-var rubyChinaUtils = angular.module("rubyChinaUtils", [])
-rubyChinaUtils.run(['$rootScope', function($rootScope){
-    angular.forEach(window.rubyChinaUtils, function(fn, key){
+var rubyChinaHelpers = angular.module("rubyChinaHelpers", [])
+rubyChinaHelpers.run(['$rootScope', function($rootScope){
+    angular.forEach(window.Helpers, function(fn, key){
         $rootScope[key] = fn
     })
 }]);

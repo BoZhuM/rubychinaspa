@@ -15,7 +15,7 @@ var rubychinaApp = angular.module('rubychinaApp', [
   'rubychinaServices',
   'rubychinaDirectives',
   'rubychinaFilters',
-  'rubyChinaUtils' // some helper methods.
+  'rubyChinaHelpers' // some helper methods.
 ]);
 
 rubychinaApp.run(['$rootScope', 'Node', 'Auth', '$injector', '$cookieStore', function($rootScope, Node, Auth, $injector, $cookieStore){
