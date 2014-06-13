@@ -26,7 +26,7 @@ rubychinaApp.run(['$rootScope', 'Node', 'Auth', '$injector', '$cookieStore', fun
       if (Auth.getAuth().token) {
           headersGetter()['Authorization'] = "Bearer "+ Auth.getAuth().token ;
       }else{
-  			 delete headersGetter()['Authorization']
+          delete headersGetter()['Authorization']
       }
 
       if (data) {
@@ -43,7 +43,6 @@ rubychinaApp.factory('authHttpResponseInterceptor',['$q','$location', '$cookieSt
                 console.log("Response 401");
                 alert("token验证出错, 请重新输入token.")
             }
-
             return response || $q.when(response);
         },
         responseError: function(rejection) {
@@ -81,15 +80,18 @@ rubychinaApp.config(function($sceDelegateProvider) {
 //routes settings
 rubychinaApp.config(['$routeProvider',
   function($routeProvider){
-    //topics#index
+    //Auth#login
     $routeProvider.when('/login', {
       templateUrl: '/views/application/login.html',
       controller: 'AuthCtrl'
     });
+    
+    //topics#index
     $routeProvider.when('/topics', {
         templateUrl: '/views/topics/index.html',
         controller: 'TopicIndexCtrl'
     });
+
     //topics#new
     $routeProvider.when('/topics/new', {
         templateUrl: '/views/topics/new.html',
