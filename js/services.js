@@ -25,6 +25,7 @@ rubychinaServices.factory('Auth', ['$cookieStore', function($cookieStore){
 rubychinaServices.factory('Topic', ['$resource',
     function($resource){
         return $resource(base_url() + 'topics/:id.json', {id: '@id'}, {
+            edit:    { method: 'GET' },
             query:    { method: 'GET', isArray: true },
             favorite: { method: 'POST', url: base_url() + 'topics/:id/favorite.json' },
             reply:    { method: 'POST', url: base_url() + 'topics/:id/replies.json' },

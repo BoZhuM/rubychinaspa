@@ -83,11 +83,35 @@ rubychinaControllers.controller('TopicIndexCtrl', ['$scope', 'Topic', 'Node', '$
     }
 }]);
 
+//topics/:id/edit
+rubychinaControllers.controller("TopicEditCtrl", ['$scope', 'Photo', '$location', '$routeParams', 'Topic',
+  function TopicEditCtrl($scope, Photo, $location, $routeParams, Topic){
+    $scope.topic = Topic.get({id: $routeParams.id})
+    var dealTopic = function(){
+      $scope.topic.$save(
+        function(successResult) {
+          console.log("/topics/" + successResult.id)
+          $location.path("/topics/" + successResult.id)
+        },
+        function(errorResult) {
+          if(errorResult.status === 404) {
+              alert('some wrong ')
+          }
+          if(errorResult.status === 401){
+            alert('未登陆')
+          }
+        }
+      );
+    }
+    $scope.createTopic = dealTopic;
+  }
+]);
+
 
 //topics/new
 rubychinaControllers.controller("TopicNewCtrl", ['$scope', 'Photo', '$location', 'Topic',
   function TopicNewCtrl($scope, Photo, $location, Topic){
-    $scope.topic = {};
+    $scope.topic = {title: '', body: ''};
     $scope.createTopic = function(){
       Topic.create(
         $scope.topic,

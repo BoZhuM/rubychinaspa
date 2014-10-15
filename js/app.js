@@ -105,6 +105,11 @@ rubychinaApp.config(['$routeProvider',
         controller: 'TopicShowCtrl'
     });
 
+    $routeProvider.when('/topics/:id/edit', {
+        templateUrl: 'views/topics/edit.html',
+        controller: 'TopicEditCtrl'
+    });
+
     //nodes#index
     $routeProvider.when('/nodes', {
         templateUrl: '/views/nodes/index.html',
