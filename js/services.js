@@ -1,6 +1,6 @@
 /* Services */
 var base_url = function(){
-  return "http://ruby-china.org/api/v2/"
+  return "https://ruby-china.org/api/v2/"
   // return "http://localhost:3000/api/v2/"
 }
 
