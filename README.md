@@ -15,12 +15,14 @@ ruby-china.org的SPA版, 根据ruby-china.org api制作.使用简单的angularjs
 - 支持 markdown即时预览(预览格式与ruby-china.org原站略有不同.)
 - 支持 emoji
 
-## DEMO
-因为CROS的原因, 无论是在线测试还是本地测试, 都无法获取ruby-china.org的api数据. 除非ruby-china.org管理员允许CROS.
+## ~~DEMO~~
+~~因为CROS的原因, 无论是在线测试还是本地测试, 都无法获取ruby-china.org的api数据. 除非ruby-china.org管理员允许CROS.~~
 
-### DEMO运行的前提
+当前ruby-china.org官方已支持CROS, :), 此节可省. 以下部分保留以作参考;
 
-Google chrome 浏览器通过运行非安全模式(暂时)解决此问题:
+### ~~DEMO运行的前提~~
+
+~~Google chrome 浏览器通过运行非安全模式(暂时)解决此问题:~~
 
 - Linux: `google-chrome --disable-web-security`
 - Mac: `open -a Google\ Chrome --args --disable-web-security`
