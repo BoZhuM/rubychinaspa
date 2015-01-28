@@ -26,9 +26,9 @@
              • <a href='#/users/{{topic.user.login}}'>{{topic.user.login}}</a>
              • <span time-ago from-time="{{topic.created_at}}"></span>
              <a ng-click="favorite()" class='favorite'><i class="glyphicon glyphicon-heart"></i></a>
-             <span ng-show='topic.last_reply_user_login'>• 最后由 
-              <a ng-href="#/users/{{topic.last_reply_user_login}}">{{topic.last_reply_user_login}}</a> 
-              于 
+             <span ng-show='topic.last_reply_user_login'>• 最后由
+              <a ng-href="#/users/{{topic.last_reply_user_login}}">{{topic.last_reply_user_login}}</a>
+              于
               <span time-ago from-time="{{topic.replied_at}}"></span>
               <a ng-href='#/topics/{{topic.id}}#reply{{topic.replies_count}}'>回复</a>
              </span>
@@ -36,7 +36,7 @@
             </a>
           </div>
         </div>
-        
+
       <hr />
       <div ng-bind-html="topic.body_html"></div>
 
@@ -50,8 +50,8 @@
             <div class='media-body'>
                <div class='media-heading'>
                 <span class='text-muted'>
-                   <a href='#/users/{{reply.user.login}}'>{{reply.user.login}} </a> 
-                   <span>{{$index + 1}}楼</span> · 
+                   <a href='#/users/{{reply.user.login}}'>{{reply.user.login}} </a>
+                   <span>{{$index + 1}}楼</span> ·
                    <span time-ago from-time="{{reply.created_at}}"></span>
                 </span>
                </div>
