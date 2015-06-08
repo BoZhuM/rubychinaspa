@@ -2,6 +2,6 @@
 var rubychinaConfigs = angular.module("rubychinaConfigs", []);
 rubychinaConfigs.factory("Configuration", function(){
     var config = {
-        api_url: 'https://ruby-china.org/api/v2/'
+        api_url: 'https://ruby-china.org/api/v3/'
     };
 })
